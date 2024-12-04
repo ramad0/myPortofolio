@@ -1,0 +1,9 @@
+# Node.js modules
+back_end/node_modules/
+
+# Angular cache
+portfolio-app-public/.angular/cache/
+portfolio-app-admin/.angular/cache/
+
+# Build output
+dist/
