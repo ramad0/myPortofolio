@@ -1,0 +1,59 @@
+<main class="main">
+  <section class="home section" id="home">
+    <div class="home__container container grid">
+
+      <!-- ===== PERFIL ===== -->
+      <div class="perfil" *ngFor="let data of homeData">
+        <img [src]="data.perfil_img" alt="image" class="perfil__img">
+        <div class="perfil__data">
+          <h1 class="perfil__name">{{ data.perfil_fname }} <br> {{ data.perfil_lname }}</h1>
+          <div class="perfil__buttons">
+            <a routerLink="/projects" class="button">projects</a>
+            <a routerLink="/services" class="button button__black">services</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== INFO ===== -->
+      <div class="info" *ngFor="let data of homeData">
+        <div class="info__data">
+          <div class="info__circle"></div>
+          <h1 class="info__name">{{ data.info_name }}</h1>
+        </div>
+
+        <div class="info__image">
+          <img [src]="data.info_img" alt="image" class="info__img">
+        </div>
+
+        <p class="info__description">{{ data.info_disc }}</p>
+        <a [href]="data.info_cv" download target="_blank" class="button button__black">Download CV</a>
+      </div>
+
+      <!-- ===== ABOUT ===== -->
+      <div class="about" *ngFor="let data of homeData">
+        <h3 class="about__name">{{ data.about_name }} - <b>{{ data.about_job }}</b></h3>
+        <p class="about__description">{{ data.about_disc }}</p>
+        <div class="about__social">
+          <a *ngFor="let link of data.about_social_link; let i = index" [href]="link" target="_blank" class="about__link">
+            <i [class]="data.about_social_i[i]"></i>
+          </a>
+        </div>
+        <div class="about__image">
+          <img [src]="data.about_img" alt="image" class="about__img">
+        </div>
+        <p class="about__note">{{ data.about_note }}</p>
+        <a routerLink="/contact" class="button">Contact Me</a>
+      </div>
+
+      <!-- ===== SKILLS ===== -->
+      <div class="skills" *ngFor="let data of homeData">
+        <h2 class="skills__title">skills</h2>
+        <div class="skills__items">
+          <img *ngFor="let item of data.skills_items" [src]="item" alt="image" class="skills__item">
+        </div>
+        <p class="skills__description">{{ data.skills_disc }}</p>
+      </div>
+    </div>
+  </section>
+</main>
+<app-dashboard-home></app-dashboard-home>

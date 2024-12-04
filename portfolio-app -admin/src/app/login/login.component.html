@@ -1,0 +1,17 @@
+<main class="main">
+  <section class="contact section" id="contact">
+      <h2 class="section__title"> login </h2>
+      <div class="contact__container container grid">
+        <form [formGroup]="loginForm" (ngSubmit)="login()" class="contact__form grid" id="contact-form">
+          <div class="contact__group grid">
+            <input type="email" id="userName" class="contact__input" placeholder="Enter email" formControlName="userName">
+          </div>
+          <div class="contact__group grid">
+            <input type="password" id="passWord" class="contact__input" placeholder="Password" formControlName="passWord">
+          </div>
+          <p class="contact__message">{{ msg }}</p>
+          <button type="submit" class="button contact__button">Submit</button>
+        </form>
+    </div>
+</section>
+</main>

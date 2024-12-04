@@ -1,0 +1,79 @@
+<main class="main">
+  <section class="contact section" id="contact">
+    <h2 class="section__title">{{ isEditing ? 'Update' : 'Add' }} Personal Profile</h2>
+    <div class="contact__container container grid">
+      <form (ngSubmit)="submitHomeForm()" [formGroup]="homeForm" class=" grid">
+        <div class="contact__group grid">
+          <input type="text" formControlName="perfil_fname" placeholder="First Name" required class="contact__input" />
+          <input type="text" formControlName="perfil_lname" placeholder="Last Name" required class="contact__input" />
+        </div>
+
+        <label for="perfil_img">Profile Image</label>
+        <input type="file" (change)="onFileChange($event, 'perfil_img')" class="contact__input" />
+
+        <h3>Information Section</h3>
+        <input type="text" formControlName="info_name" placeholder="Info Name" required class="contact__input" />
+
+        <label for="info_img">Info Image</label>
+        <input type="file" (change)="onFileChange($event, 'info_img')" class="contact__input" />
+
+        <textarea formControlName="info_disc" placeholder="Description" required class="contact__input contact__area"></textarea>
+
+        <label for="info_cv">CV</label>
+        <input type="file" (change)="onFileChange($event, 'info_cv')" class="contact__input" />
+
+        <h3>About Section</h3>
+        <input type="text" formControlName="about_name" placeholder="About Name" required class="contact__input" />
+        <input type="text" formControlName="about_job" placeholder="Job" required class="contact__input" />
+        <textarea formControlName="about_disc" placeholder="Description" required class="contact__input contact__area"></textarea>
+
+        <label for="about_social_i">Social Icons:</label>
+        <div formArrayName="about_social_i" class="contact__group grid">
+          <div *ngFor="let icon of aboutSocialIcons.controls; let i = index">
+            <input [formControlName]="i" placeholder="Enter social icon text" class="contact__input" />
+          </div>
+        </div>
+        <button type="button" (click)="addSocialIcon()" class="button contact__button">Add Social Icon</button><br>
+
+        <label for="about_social_link">Social Links:</label>
+        <div formArrayName="about_social_link" class="contact__group grid">
+          <div *ngFor="let link of aboutSocialLinks.controls; let i = index">
+            <input [formControlName]="i" placeholder="Enter social link" class="contact__input" />
+          </div>
+        </div>
+        <button type="button" (click)="addSocialLink()" class="button contact__button">Add Social Link</button><br>
+
+        <label for="about_img">About Image:</label>
+        <input type="file" (change)="onFileChange($event, 'about_img')" class="contact__input" />
+
+        <label for="about_note">Notes:</label>
+        <textarea formControlName="about_note" placeholder="Notes" required class="contact__input contact__area"></textarea>
+
+        <h3>Skills Section</h3>
+        <label for="skills_items">Skills</label>
+        <div class="contact__group grid">
+          <div *ngFor="let item of skillsFiles; let i = index">
+            <input type="file" (change)="onFileChange($event, 'skills_items')" [attr.data-index]="i" class="contact__input" />
+          </div>
+        </div>
+        <button type="button" (click)="addSkillsFile()" class="button contact__button">Add Skill Item</button><br>
+
+        <textarea formControlName="skills_disc" placeholder="Skills Description" required class="contact__input contact__area"></textarea>
+
+        <button type="submit" class="button contact__button">
+          {{ isEditing ? 'Update' : 'Add' }} Data
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <section class="list section">
+    <h2 class="section__title">Existing Data</h2>
+    <div *ngFor="let item of homeData" class="list__item">
+      <h3>{{ item.perfil_fname }} {{ item.perfil_lname }}</h3>
+      <p>{{ item.info_disc }}</p>
+      <button (click)="editHome(item)" class="button edit__button">Edit</button>
+      <button (click)="deleteHome(item._id)" class="button__delete delete__button">Delete</button>
+    </div>
+  </section>
+</main>

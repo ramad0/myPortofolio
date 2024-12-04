@@ -1,0 +1,21 @@
+<main class="main">
+  <section class="contact section" id="contact">
+    <h2 class="section__title">Footer</h2>
+    <div class="contact__container container grid">
+      <form (ngSubmit)="productForm.get('_id')?.value ? updateFooter(productForm.get('_id')?.value) : addFooter()" [formGroup]="productForm" class=" grid">
+        <input class="contact__input" type="text" formControlName="footer_name" placeholder="Enter footer name" required><br>
+        <button type="submit" class="button contact__button" >{{ productForm.get('_id')?.value ? 'Update Footer' : 'Add Footer' }}</button>
+      </form>
+    </div>
+    <div class="footer__list">
+      <h3 class="footer__title">Existing Footers</h3>
+      <div *ngFor="let footer of footers" class="footer__item">
+        <p>
+          <strong>Footer Name:</strong> {{ footer.footer_name }}
+        </p>
+        <button class="button footer__edit-button" (click)="editFooter(footer)"> Edit </button>
+        <button class="button__delete footer__delete-button" (click)="deleteFooter(footer._id)"> Delete </button>
+      </div>
+    </div>
+  </section>
+</main>

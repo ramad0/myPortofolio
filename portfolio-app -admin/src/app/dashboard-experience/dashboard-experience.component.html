@@ -1,0 +1,37 @@
+<main class="main">
+  <section class="contact section" id="contact">
+    <h2 class="section__title">Experience Section</h2>
+    <div class="contact__container container grid">
+      <form (ngSubmit)="experienceForm.get('_id')?.value ? updateExperience(experienceForm.get('_id')?.value) : addExperience()" [formGroup]="experienceForm" class=" grid">
+        <label for="company_name" class="contact__label">Company Name:</label>
+        <input type="text" formControlName="experience_company_name" required class="contact__input">
+        <br>
+        <label for="profession" class="contact__label">Profession:</label>
+        <input type="text" formControlName="experience_profession" required class="contact__input">
+        <br>
+        <label for="date" class="contact__label">Date:</label>
+        <input type="text" formControlName="experience_date"required class="contact__input">
+        <br>
+        <label for="description" class="contact__label">Description:</label>
+        <textarea formControlName="experience_disc" required class="contact__input contact__area">
+        </textarea>
+        <br>
+        <button type="submit" class="button contact__button">{{ experienceForm.get('_id')?.value ? 'Update Experience' : 'Add Experience' }}
+        </button>
+      </form>
+    </div>
+    <div class="experience__list">
+      <h3 class="experience__title">Existing Experiences</h3>
+      <div *ngFor="let experience of experiences" class="experience__item">
+        <p>
+          <strong>Company:</strong> {{ experience.experience_company_name }}<br>
+          <strong>Profession:</strong> {{ experience.experience_profession }}<br>
+          <strong>Date:</strong> {{ experience.experience_date }}<br>
+          <strong>Description:</strong> {{ experience.experience_disc }}
+        </p>
+        <button class="button experience__edit-button" (click)="editExperience(experience)"> Edit </button>
+        <button class="button__delete experience__delete-button" (click)="deleteExperience(experience._id)"> Delete </button>
+      </div>
+    </div>
+  </section>
+</main>

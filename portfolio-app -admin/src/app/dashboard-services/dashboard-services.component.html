@@ -1,0 +1,33 @@
+<main class="main">
+  <section class="contact section" id="contact">
+    <h2 class="section__title">Service Section</h2>
+
+    <div class="contact__container container grid">
+      <form (ngSubmit)="ServiceForm.get('_id')?.value ? updateService(ServiceForm.get('_id')?.value) : addService()" [formGroup]="ServiceForm" class=" grid">
+        <label for="services_i" class="contact__label">Services Identifier:</label>
+        <input type="text" formControlName="services_i" required class="contact__input"><br>
+
+        <label for="services_name" class="contact__label">Services Name:</label>
+        <input type="text" formControlName="services_name" required class="contact__input"><br>
+
+        <label for="services_disc" class="contact__label">Description:</label>
+        <textarea formControlName="services_disc" required class="contact__input contact__area"></textarea><br>
+
+        <button type="submit" class="button contact__button"> {{ ServiceForm.get('_id')?.value ? 'Update Service' : 'Add Service' }} </button>
+      </form>
+    </div>
+    <div class="service__list">
+      <h3 class="service__title">Existing Services</h3>
+      <div *ngFor="let service of services" class="service__item">
+        <p>
+          <strong>Service Identifier:</strong> {{ service.services_i }} <br>
+          <strong>Service Name:</strong> {{ service.services_name }} <br>
+          <strong>Description:</strong> {{ service.services_disc }}
+        </p>
+        <button class="button service__edit-button" (click)="editService(service)"> Edit </button>
+        <button class="button__delete service__delete-button" (click)="deleteService(service._id)">  Delete </button>
+      </div>
+    </div>
+
+  </section>
+</main>

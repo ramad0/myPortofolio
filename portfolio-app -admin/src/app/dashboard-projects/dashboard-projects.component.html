@@ -1,0 +1,47 @@
+<main class="main">
+  <section class="contact section" id="contact">
+    <h2 class="section__title">Project Section</h2>
+
+    <div class="contact__container container grid">
+
+      <form (ngSubmit)="projectForm.get('_id')?.value ? updateProject(projectForm.get('_id')?.value) : addProject()" [formGroup]="projectForm" class=" grid">
+
+        <label for="project_name" class="contact__label">Project Name:</label>
+        <input type="text" formControlName="project_name" required class="contact__input"><br>
+
+        <label for="project_url" class="contact__label">Project URL:</label>
+        <input type="text" formControlName="project_url" required class="contact__input"><br>
+
+        <label for="project_disc" class="contact__label">Description:</label>
+        <textarea formControlName="project_disc" required class="contact__input contact__area"></textarea><br>
+
+        <label for="project_skill_img_src" class="contact__label">Skill Images:</label>
+        <div *ngFor="let img of skillImages; let i = index" class="contact__group grid">
+          <input type="file" (change)="onFileChange($event, 'project_skill_img_src')" [attr.data-index]="i" multiple class="contact__input"><br>
+        </div>
+        <button type="button" (click)="addSkillImage()" class="button contact__button">Add Skill Image</button><br>
+
+        <label for="project_img" class="contact__label">Project Image:</label>
+        <input type="file" (change)="onFileChange($event, 'project_img')" accept="image/*" class="contact__input"><br>
+
+        <button type="submit" class="button contact__button">
+          {{ projectForm.get('_id')?.value ? 'Update Project' : 'Add Project' }}
+        </button>
+      </form>
+    </div>
+
+    <div class="project__list">
+      <h3 class="project__title">Existing Projects</h3>
+
+      <div *ngFor="let project of projects" class="project__item">
+        <p>
+          <strong>Name:</strong> {{ project.project_name }} <br>
+          <strong>URL:</strong> {{ project.project_url }} <br>
+          <strong>Description:</strong> {{ project.project_disc }}
+        </p>
+        <button class="button project__edit-button" (click)="editProject(project)"> Edit </button>
+        <button class="button__delete project__delete-button" (click)="deleteProject(project._id)"> Delete </button>
+      </div>
+    </div>
+  </section>
+</main>

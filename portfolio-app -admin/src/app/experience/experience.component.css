@@ -1,0 +1,68 @@
+.experience__container{
+  row-gap:2rem ;
+}
+.experience__card{
+  display: grid;
+  row-gap: 1rem;
+}
+.experience__company{
+  font-size: var(--h2-font-size);
+}
+.experience__data{
+  background-color: var(--container-color);
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+}
+.experience__profession{
+  font-size: var(--h3-font-size);
+  margin-bottom: 0.5rem;
+}
+.experience__date{
+  display: block;
+  font-size: var(--smaller-font-size);
+  margin-bottom: 1rem;
+}
+.experience__description{
+  color: var(--text-color);
+}
+@media screen and (min-width:540px){
+  .experience__container{
+    grid-template-columns: 380px;
+    justify-content: center;
+  }
+}
+@media screen and (min-width:768px){
+  .experience__container{
+    grid-template-columns: initial;
+  }
+  .experience__card{
+    grid-template-columns: 320px 380px;
+    align-items: center;
+  }
+}
+@media screen and (min-width:1200px) {
+  .container{
+    margin-inline: auto;
+  }
+  .section{
+    padding-block: 3rem 4rem;
+  }
+  .section__title{
+    font-size: var(--h1-font-size);
+    margin-bottom: 4rem;
+  }
+  .experience__container{
+    row-gap: 4rem;
+  }
+  .experience__card{
+    grid-template-columns: 350px 510px;
+    column-gap: 8rem;
+  }
+  .experience__company{
+    font-size: var(--h1-font-size);
+  }
+  .experience__data{
+    padding: 2rem;
+    border-radius: 2rem;
+  }
+}

@@ -1,0 +1,33 @@
+<nav class="nav">
+  <ul class="nav__list">
+    <li>
+      <a routerLink="/home" title="Home" class="nav__link"  [class.active-link]="isActive('/home') ">
+        <i class="ri-home-line"></i>
+      </a>
+    </li>
+
+    <li>
+      <a routerLink="/projects" title="Projects" class="nav__link" [class.active-link]="isActive('/projects')">
+        <i class="ri-folder-line"></i>
+      </a>
+    </li>
+
+    <li>
+      <a routerLink="/services" title="Services" class="nav__link" [class.active-link]="isActive('/services')">
+        <i class="ri-file-edit-line"></i>
+      </a>
+    </li>
+
+    <li>
+      <a routerLink="/experience" title="Experience" class="nav__link" [class.active-link]="isActive('/experience')">
+        <i class="ri-honour-line"></i>
+      </a>
+    </li>
+
+    <li>
+      <a routerLink="/contact" title="Contact" class="nav__link" [class.active-link]="isActive('/contact')">
+        <i class="ri-send-plane-line"></i>
+      </a>
+    </li>
+  </ul>
+</nav>

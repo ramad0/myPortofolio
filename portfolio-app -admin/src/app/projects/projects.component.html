@@ -1,0 +1,24 @@
+<main class="main">
+  <section class="projects section" id="projects">
+    <h2 class="section__title">RECENT PROJECTS</h2>
+    <div class="projects__container container grid">
+      <article *ngFor="let project of projects" class="projects__card">
+        <a [href]="project.project_url" target="_blank" class="projects__image">
+          <img [src]="project.project_img" alt="image" class="projects__img">
+        </a>
+        <div class="projects__data">
+          <h3 class="projects__name">{{ project.project_name }}</h3>
+          <p class="projects__description">{{ project.project_disc }}</p>
+          <div class="projects__skills">
+            <img *ngFor="let skillImg of project.project_skill_img_src" [src]="skillImg" alt="skill image" class="projects__skill">
+          </div>
+          <a [href]="project.project_url" target="_blank" class="projects__button">
+            <i class="ri-link"></i>
+            <span>Visit Project</span>
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+<app-dashboard-projects></app-dashboard-projects>

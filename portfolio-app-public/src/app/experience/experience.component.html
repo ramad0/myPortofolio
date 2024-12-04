@@ -1,0 +1,15 @@
+<main class="main">
+  <section class="experience section" id="experience">
+    <h2 class="section__title">EXPERIENCE OR WORK</h2>
+    <div class="experience__container container grid">
+      <article *ngFor="let experience of experiences" class="experience__card">
+        <h2 class="experience__company">{{ experience.experience_company_name }}</h2>
+        <div class="experience__data">
+          <h3 class="experience__profession">{{ experience.experience_profession }}</h3>
+          <span class="experience__date">{{ experience.experience_date }}</span>
+          <p class="experience__description">{{ experience.experience_disc }}</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
